@@ -2,9 +2,6 @@ title: "All Of Tech"
 author: "Ankur Singh"
 description: "A platform for blogging all you learn for the community" # This will show up in places like twitter, linkedin, etc, if you share your sites url as a post.
 
-baseurl: "/blog" # the subpath of your site, e.g. /blog
-url: "https://sankur-codes.github.io"
-
 # Email / Social media user names used by the minima theme:
 # All of these are optional and can be removed or commented out
 #email: "example@mail.com"
