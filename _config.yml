@@ -18,19 +18,19 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: Simon Dosda
+title: All Of Tech
 author: Simon Dosda
 description: >- # this means to ignore newlines until "baseurl:"
-  My journey into web development
+  My journey into blogging
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://simondosda.github.io" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://alloftech.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 
-github_username: simondosda
+github_username: alloftech
 
 show_excerpts: true
 permalink: /:collection/:year-:month-:day-:title:output_ext
 
-staticman_url: "https://sdosda-staticman.herokuapp.com/v3/entry/github/simondosda/SimonDosda.github.io/main/comments"
+#staticman_url: "https://sdosda-staticman.herokuapp.com/v3/entry/github/simondosda/SimonDosda.github.io/main/comments"
 
 # Build settings
 theme: minima
