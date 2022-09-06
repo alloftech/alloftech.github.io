@@ -5,20 +5,13 @@
   {%- seo -%}
   <link rel="stylesheet" href="{{ "/assets/main.css" | relative_url }}">
   {%- feed_meta -%}
-  {%- if jekyll.environment == 'production' and site.google_analytics -%}
-    {%- include google-analytics.html -%}
+
+  <meta name="google-site-verification" content="_FCAR-2L9sQJOsMD4s1msdj0dYZ1pFBKoeX5pq8a4NM" />
+
+  {%- if jekyll.environment == 'production' -%}
+    <script async defer data-website-id="b2901c2a-3d1b-4453-abc5-c56c99a967c5" src="https://umami.iviea.com/umami.js"></script>
   {%- endif -%}
 
-  <!-- highlight.js support -->
-  <link rel="stylesheet" href="/js/highlightjs/styles/github.css">
-  <link rel="stylesheet" href="/js/highlightjs/styles/ssms.css" />
-
-  <script type="text/javascript" src="/js/highlightjs/highlight.min.js"></script>
-
-  <script type="text/javascript" src="/js/highlightjs/languages/plaintext.min.js"></script>
-  <script type="text/javascript" src="/js/highlightjs/languages/powershell.min.js"></script>
-  <script type="text/javascript" src="/js/highlightjs/languages/tsql.min.js"></script>
-
-  <script type="text/javascript"> hljs.highlightAll(); </script>
-  <!-- end highlight.js support -->
+  {%- include custom-head.html -%}
+                        
 </head>

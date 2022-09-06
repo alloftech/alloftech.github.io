@@ -1,0 +1,9 @@
+_id: 9a5502b0-8d2d-11ec-ab7f-b98f7f05568d
+parent_id: ''
+name: Daanii
+message: >-
+  Hi! First of all, this is an amazing tutorial. Second, i have a problem. After
+  pressing "Send" it goes to the staticman url on heroku but it gives me
+  application error. The main page of the heroku app is alright (it shows
+  welcome message from staticman). I think i followed everything right.
+date: 1644798754

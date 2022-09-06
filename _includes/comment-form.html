@@ -1,0 +1,44 @@
+<form method="POST" action="{{ site.staticman_url }}" class="comment-form">
+  <input name="options[redirect]" type="hidden" value="{{ 'comment-success' | absolute_url }}">
+  <input name="options[redirectError]" type="hidden" value="{{ 'comment-error' | absolute_url }}">
+  <input name="options[slug]" type="hidden" value="{{ page.slug }}" />
+  <input name="fields[parent_id]" type="hidden" value="{{ include.parent_id }}" />
+  
+  <input type="hidden" name="options[reCaptcha][siteKey]" value="6Ld-69ccAAAAAHWq5Fo1s6xpsghd-rp5zggFjRLO">
+  <input type="hidden" name="options[reCaptcha][secret]" value="rWlFU9MONWZO0uQB2wRXZJAm6wFFEO/tBAaAXRXe+zY86/bD7s7CNIw3/gEB9OefaJx1Ugylqse7kOG+KtSshUQDB6BWw4j6RpDCeIcHXpBCkM8/CxiXRTyVaNpm+2KMta8CmfbLkExCAvmLAim1FIQ727BGkNVvWjpG5nJSpClGmIjqNbuB+wsowkeeao5en8mqozKda77RGgdiS1ZD8GjX8KBFf1srq4EZySTm1D5lb3gadvpLL6XPj9Pql6wXdyqMGVPM/v0hHE7cMIAiRP+V5KlGH8Z2TnCXpJumb/nryX0iCbZFvch+EohTA8yN0isQ22GA7TuCr2iNwCeI7A==">
+
+  <input
+      class="comment-name"
+      name="fields[name]"
+      type="text"
+      placeholder="Name"
+      required
+    />
+
+  <textarea
+    id="message-{{ include.parent_id }}"
+    class="comment-message"
+    name="fields[message]"
+    placeholder="Comment (markdown accepted)"
+    required
+  ></textarea>
+    
+  <div 
+    class="g-recaptcha" 
+    data-sitekey="6Ld-69ccAAAAAHWq5Fo1s6xpsghd-rp5zggFjRLO"
+  ></div>
+
+  <button class="comment-submit" >
+    SEND
+  </button>
+</form>
+
+<script>
+  var simplemde = new SimpleMDE({
+    element: document.getElementById("message-{{ include.parent_id }}"),
+    forceSync: true,
+    spellChecker: false,
+    status: false,
+    placeholder: "Comment (markdown supported)",
+  });
+</script>

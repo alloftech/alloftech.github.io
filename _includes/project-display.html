@@ -1,0 +1,18 @@
+<div class="project">
+    <h2><a href="{{ repo.html_url }}">{{ include.repo.name }}</a></h2>
+
+    <p>{{include.repo.description}}</p>
+
+    <div class="topics">
+        {% for topic in include.repo.topics %}
+        <p>{{ topic }}</p>
+        {% endfor %}
+    </div>
+
+    <p>
+        Last updated: 
+        <span class="update">
+            {{include.repo.updated_at | date_to_string}}
+        </span>
+    </p>
+</div>

@@ -1,0 +1,117 @@
+.comment {
+  padding-top: 10px;
+  h3 {
+    display: inline;
+    color: royalblue;
+  }
+  p {
+    margin: 0;
+  }
+}
+
+.comment-new {
+  margin-top: 25px;
+}
+
+.comment-form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 24px;
+
+  .comment-message,
+  .comment-name {
+    font-size: 1rem;
+    padding: 16px;
+    margin: 0;
+  }
+
+  .comment-name {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 16px;
+  }
+
+  .comment-message {
+    min-height: 150px;
+    resize: none;
+  }
+
+  .g-recaptcha {
+    margin-top: 16px;
+  }
+
+  .comment-submit {
+    margin-top: 16px;
+    padding: 16px;
+    width: 200px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: transparent;
+    color: #555;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+  }
+}
+
+.comment-reply {
+  padding: 16px;
+  padding-top: 4px;
+  display: flex;
+  flex-direction: column;
+
+  .open {
+    font-style: italic;
+  }
+
+  .close {
+    display: none;
+    align-self: flex-end;
+    padding: 5px 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+
+  .open:hover,
+  .close:hover {
+    cursor: pointer;
+  }
+
+  .comment-form {
+    display: none;
+  }
+
+  .checkbox {
+    display: none;
+    &:checked ~ .open {
+      display: none;
+    }
+    &:checked ~ .close {
+      display: block;
+    }
+    &:checked ~ .comment-form {
+      display: flex;
+    }
+  }
+}
+
+.comment-box {
+  padding: 16px;
+  border-radius: 16px;
+  margin-bottom: 36px;
+}
+
+.comment-success {
+  border: 2px solid rgb(28, 134, 99);
+  background-color: rgba(97, 185, 156, 0.2);
+}
+
+.comment-error {
+  border: 2px solid darkred;
+  background-color: rgba(194, 63, 63, 0.2);
+}
+
+.CodeMirror,
+.CodeMirror-scroll {
+  min-height: 150px;
+}

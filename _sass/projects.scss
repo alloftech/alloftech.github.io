@@ -1,0 +1,20 @@
+.project {
+  margin-bottom: 32px;
+  .topics {
+    display: flex;
+    margin-bottom: 16px;
+    p {
+      background-color: rgb(112, 112, 216);
+      color: white;
+      font-size: var(--font-size-small);
+      font-weight: 600;
+      padding: 4px 16px;
+      border-radius: 32px;
+      margin: 0;
+      margin-right: 16px;
+    }
+  }
+  .update {
+    font-style: italic;
+  }
+}

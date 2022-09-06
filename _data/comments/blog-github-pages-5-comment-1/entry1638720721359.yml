@@ -1,0 +1,5 @@
+_id: 142e7230-55e6-11ec-9908-399a9d61908b
+parent_id: e988de70-55dc-11ec-9ef6-0bf6dab95b3d
+name: Simon
+message: "Hi Artem, I am not sure but that might be because you are not using the `github-pages` gem ([https://github.com/SimonDosda/gp-blog/blob/step-4.1-comment/Gemfile#L15](https://github.com/SimonDosda/gp-blog/blob/step-4.1-comment/Gemfile#L15))\r\nHope it helps."
+date: 1638720721

@@ -1,0 +1,5 @@
+_id: 03ec3970-bf04-11ec-9f03-e7bf82413333
+parent_id: ''
+name: Suggestion
+message: "Hi, \r\n\r\nThanks for your tutorial.\r\n\r\nI guess the command for creating a project should be \r\n```bash\r\njekyll new \"folder/repo-path\" \r\n```"
+date: 1650278451

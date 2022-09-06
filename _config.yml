@@ -1,42 +1,60 @@
-title: "All Of Tech"
-author: "Ankur Singh"
-description: "A platform for blogging all you learn for the community" # This will show up in places like twitter, linkedin, etc, if you share your sites url as a post.
+# Welcome to Jekyll!
+#
+# This config file is meant for settings that affect your whole blog, values
+# which you are expected to set up once and rarely edit after that. If you find
+# yourself editing this file very often, consider using Jekyll's data files
+# feature for the data you need to update frequently.
+#
+# For technical reasons, this file is *NOT* reloaded automatically when you use
+# 'bundle exec jekyll serve'. If you change this file, please restart the server process.
+#
+# If you need help with YAML syntax, here are some quick references for you:
+# https://learn-the-web.algonquindesign.ca/topics/markdown-yaml-cheat-sheet/#yaml
+# https://learnxinyminutes.com/docs/yaml/
+#
+# Site settings
+# These are used to personalize your new site. If you look in the HTML files,
+# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
+# You can create any custom variable you would like, and they will be accessible
+# in the templates via {{ site.myvariable }}.
 
-# Email / Social media user names used by the minima theme:
-# All of these are optional and can be removed or commented out
-#email: "example@mail.com"
-#twitter_username: "twitteruser"
-#github_username: "githubuser"
-#linkedin_username: "linkedinuser"
-#facebook_username: username
-#flickr_username: username
-#instagram_username: username
-#pinterest_username: username
-#youtube_username: username
-#googleplus_username: +username
+title: Simon Dosda
+author: Simon Dosda
+description: >- # this means to ignore newlines until "baseurl:"
+  My journey into web development
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "https://simondosda.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 
-#########################################################################################
-######### Nothing below needs to be changed (unless you know what you're doing) #########
-#########################################################################################
-theme: "minima"
+github_username: simondosda
 
-rss: rss
+show_excerpts: true
+permalink: /:collection/:year-:month-:day-:title:output_ext
 
-kramdown:
-  syntax_highlighter_opts:
-    disable: true
-    
+staticman_url: "https://sdosda-staticman.herokuapp.com/v3/entry/github/simondosda/SimonDosda.github.io/main/comments"
+
+# Build settings
+theme: minima
 plugins:
   - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-target-blank
   - jekyll-sitemap
-
-titles_from_headings:
-  strip_title: true
-  collections: true
-
-defaults:
-  - scope:
-      path: ""
-      type: post
-    values:
-      tags: Other
+# Exclude from processing.
+# The following items will not be processed, by default.
+# Any item listed under the `exclude:` key here will be automatically added to
+# the internal "default list".
+#
+# Excluded items can be processed by explicitly listing the directories or
+# their entries' file path in the `include:` list.
+#
+# exclude:
+#   - .sass-cache/
+#   - .jekyll-cache/
+#   - gemfiles/
+#   - Gemfile
+#   - Gemfile.lock
+#   - node_modules/
+#   - vendor/bundle/
+#   - vendor/cache/
+#   - vendor/gems/
+#   - vendor/ruby/

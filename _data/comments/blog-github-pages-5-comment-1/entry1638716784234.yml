@@ -1,0 +1,5 @@
+_id: e988de70-55dc-11ec-9ef6-0bf6dab95b3d
+parent_id: ""
+name: Artem
+message: "Simon, hello\r\nCan you help sort out the `comment-list`, I can make a comment and get a pull request, but can't get comments out of `_data/comments` to the blog page. Here's my github \r\n[https://github.com/woohung/woohung.github.io/tree/main/_includes](https://github.com/woohung/woohung.github.io/tree/main/_includes)\r\n\r\nMaybe I'm doing something wrong."
+date: 1638716784
