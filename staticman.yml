@@ -50,7 +50,7 @@ comments:
   # an error will be thrown.
   requiredFields: ["name", "message"]
 
-  reCaptcha:
-    enabled: true
-    siteKey: "6LeS7-0hAAAAABZWrfbQqXJnBdukVaGsNCvi-CvR"
-    secret: "UGPPeuaBe/SmLWdMPsEDqRhbG6Hxef95uVSKsRevLRi+clOTSd3BKORZA+edh82bEbVy8OrIrmhE+H1gUXooi+E/aTNWd2zn/xUq6woxxSz9aeaaeSgiwDU8Ts2yofXNU2r/Ue1/UYAyJ6iflsLeHD8g7Dnechq+DP3mWGGPAAY="
+  # reCaptcha:
+  #   enabled: true
+  #   siteKey: "6LeS7-0hAAAAABZWrfbQqXJnBdukVaGsNCvi-CvR"
+  #   secret: "UGPPeuaBe/SmLWdMPsEDqRhbG6Hxef95uVSKsRevLRi+clOTSd3BKORZA+edh82bEbVy8OrIrmhE+H1gUXooi+E/aTNWd2zn/xUq6woxxSz9aeaaeSgiwDU8Ts2yofXNU2r/Ue1/UYAyJ6iflsLeHD8g7Dnechq+DP3mWGGPAAY="
