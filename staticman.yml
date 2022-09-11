@@ -36,7 +36,7 @@ comments:
   # Whether entries need to be appproved before they are published to the main
   # branch. If set to `true`, a pull request will be created for your approval.
   # Otherwise, entries will be published to the main branch automatically.
-  moderation: false
+  moderation: true
 
   # When allowedOrigins is defined, only requests sent from one of the listed domains will be accepted.
   allowedOrigins: ["localhost", "alloftech.github.io"]
@@ -52,5 +52,5 @@ comments:
 
   reCaptcha:
     enabled: true
-    siteKey: "6Ld-69ccAAAAAHWq5Fo1s6xpsghd-rp5zggFjRLO"
-    secret: "rWlFU9MONWZO0uQB2wRXZJAm6wFFEO/tBAaAXRXe+zY86/bD7s7CNIw3/gEB9OefaJx1Ugylqse7kOG+KtSshUQDB6BWw4j6RpDCeIcHXpBCkM8/CxiXRTyVaNpm+2KMta8CmfbLkExCAvmLAim1FIQ727BGkNVvWjpG5nJSpClGmIjqNbuB+wsowkeeao5en8mqozKda77RGgdiS1ZD8GjX8KBFf1srq4EZySTm1D5lb3gadvpLL6XPj9Pql6wXdyqMGVPM/v0hHE7cMIAiRP+V5KlGH8Z2TnCXpJumb/nryX0iCbZFvch+EohTA8yN0isQ22GA7TuCr2iNwCeI7A=="
+    siteKey: "6LeS7-0hAAAAABZWrfbQqXJnBdukVaGsNCvi-CvR"
+    secret: "UGPPeuaBe/SmLWdMPsEDqRhbG6Hxef95uVSKsRevLRi+clOTSd3BKORZA+edh82bEbVy8OrIrmhE+H1gUXooi+E/aTNWd2zn/xUq6woxxSz9aeaaeSgiwDU8Ts2yofXNU2r/Ue1/UYAyJ6iflsLeHD8g7Dnechq+DP3mWGGPAAY="
