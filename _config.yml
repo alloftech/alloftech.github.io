@@ -30,7 +30,7 @@ github_username: alloftech
 show_excerpts: true
 permalink: /:collection/:year-:month-:day-:title:output_ext
 
-staticman_url: "https://blog-commenting-staticman.herokuapp.com/v3/entry/github/alloftech/alloftech.github.io/main/comments"
+staticman_url: "https://blog-commenting.herokuapp.com/v3/entry/github/alloftech/alloftech.github.io/main/comments"
 
 # Build settings
 theme: minima
