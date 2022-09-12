@@ -30,7 +30,7 @@ github_username: alloftech
 show_excerpts: true
 permalink: /:collection/:year-:month-:day-:title:output_ext
 
-staticman_url: "https://blog-commenting.herokuapp.com/v2/entry/github/alloftech/alloftech.github.io/main/comments"
+staticman_url: "https://blog-commenting.herokuapp.com/v3/entry/github/alloftech/alloftech.github.io/main/comments"
 
 # Build settings
 theme: minima
@@ -39,6 +39,11 @@ plugins:
   - jekyll-seo-tag
   - jekyll-target-blank
   - jekyll-sitemap
+
+reCaptcha:
+    enabled: true
+    siteKey: "6LeCNu4hAAAAABntTU83a6eTY9nxpwByKKMEsvjG"
+    secret: "Uda5LR6c8+lk25zXxHLcae3FtEMnnqUiBMiq5VJu8tjMixMwoc+9qqdgr6j4p8GnsTvrFVgKdPItHFbwSifVp6+eHqsKy1FizrAPF2pgQITuH7vekzUUaKYRT/NkRh8u23gnA9U+ki4C+Rx9m9/YPeZNHsupMm0giMWqItQYcQ24Xq9uxDsTPSN4h5bJqFop40pxGpQz4p7AximF3/yRm9fQsDeZ682C9Gxdcbn80tmg/TFJQJpdLLV8CAKwvXzTdgJymATm4KMMSWoMbZdxZXu+y6bdi15DtJ8/OvMa2X/ydEv0akqPshwF/c0OAAyo8TVoJuIbVf5sNQAMUUIzDg=="
 # Exclude from processing.
 # The following items will not be processed, by default.
 # Any item listed under the `exclude:` key here will be automatically added to
