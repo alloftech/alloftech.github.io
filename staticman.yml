@@ -12,7 +12,7 @@ comments:
   branch: "main"
 
   # Text to use as the commit message or pull request title. Accepts placeholders.
-  commitMessage: "Comment from {fields.name} on {options.slug}"
+  commitMessage: "Comment from user {fields.name} on article {options.slug}"
 
   # (*) REQUIRED
   #
