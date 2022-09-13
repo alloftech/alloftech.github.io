@@ -9,8 +9,6 @@ categories: Kubernetes
 excerpt_separator: <!--more-->
 ---
 
-> Photo by [Elisa Ventur](https://unsplash.com/@elisa_ventur).
-
 When using git commands that rewrite a branch's history, like `rebase` or `reset`, you might end up losing some commits by mistake. 
 
 But don't worry, as long as you committed your changes once, you should be able to get them back!
