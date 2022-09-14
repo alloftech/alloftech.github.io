@@ -1,17 +1,17 @@
 ---
 layout: post
 title: "Deploy your static web app on local using kubernetes"
-date: 2022-09-13
-last_modified_at: 2022-09-13
-cover_image: 2022-09-13-kubernetes-cover.png
+date: 2022-09-15
+last_modified_at: 2022-09-15
+cover_image: 2022-09-15-kubernetes-cover.png
 author: Ankur Singh
 categories: Kubernetes
 excerpt_separator: <!--more-->
 ---
 
-When using git commands that rewrite a branch's history, like `rebase` or `reset`, you might end up losing some commits by mistake. 
+Our tech industry has always promoted great innovations by adopting it for better, quicker and reliable performance. [Kubernetes](https://kubernetes.io/), known as k8s, has been one of those popular tools that has gained huge importance and community support in recent years.
 
-But don't worry, as long as you committed your changes once, you should be able to get them back!
+In this blog, we will be looking into setting up a local kubernetes cluster, understanding required architecture & components and actually deploying a static website on it.
 
 <!--more-->
 
