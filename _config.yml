@@ -40,6 +40,9 @@ plugins:
   - jekyll-target-blank
   - jekyll-sitemap
 
+include:
+  - _extras
+
 reCaptcha:
     enabled: true
     siteKey: "6LeCNu4hAAAAABntTU83a6eTY9nxpwByKKMEsvjG"
