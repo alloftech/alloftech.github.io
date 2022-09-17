@@ -1,8 +1,8 @@
 ---
 layout: post
 title: "Deploy your static web app on local using kubernetes"
-date: 2022-09-13
-last_modified_at: 2022-09-13
+date: 2022-09-24
+last_modified_at: 2022-09-24
 cover_image: 2022-09-13-01-cover.png
 author: Ankur Singh
 categories: Kubernetes
