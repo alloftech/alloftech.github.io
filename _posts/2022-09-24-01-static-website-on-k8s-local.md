@@ -32,6 +32,9 @@ In this blog, we will be looking into setting up a local kubernetes cluster, und
 - **Docker Registry**<br>
   - [Docker Registry](https://docs.docker.com/get-started/overview/#docker-registries) is the storage for Docker Images from where we can pull and push docker images
   - Docker Hub is the default public registry where the user's can push their local images or pull the publicly available remote images
+<br><br>
+![Docker Architecture](/assets/images/2022-09-22-00-docker-architecture.png)
+<br><br>
 - **kind**<br>
   - **kind** called as **kubernetes in docker**
   - There are multiple tools used which helps in creating k8 cluster on local system for setting up development environment
@@ -73,6 +76,9 @@ In this blog, we will be looking into setting up a local kubernetes cluster, und
     - However, the Deployment component abstracts the pods but internal access to the pods cannot rely on the dynamic change of pods lifecycle(creation & deletion)
     - Here comes a resource of k8 called as Service which logically group the pods with `selector` keyword
     - The multiple micro-services within the k8 cluster can access other applications(pods) through the Service component as a point of re-direction
+<br><br>
+![Kubernetes Architecture](/assets/images/2022-09-22-00-kubernetes-architecture.png)
+<br><br>
   - ***Ingress***<br>
     - Ingress act as Reverse Proxy in the k8 cluster
     - It's the resource that is an interface between the outside network(external access) and the Kubernetes cluster
@@ -82,7 +88,8 @@ In this blog, we will be looking into setting up a local kubernetes cluster, und
     - An Ingress controller is required to manage and controls the ingress component
     - It defines how ingress should work
     - Example: AWS Load Balancer controller which controls the Elastic Load Balancing for K8 clusters
-
+<br><br>
+![Kubernetes Ingress](/assets/images/2022-09-22-00-k8-ingress.png)
 <br><br>
 
 ## Hosting Your Static Web Application On Local
