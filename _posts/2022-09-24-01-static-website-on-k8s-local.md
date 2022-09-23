@@ -22,7 +22,9 @@ In this blog, we will be looking into setting up a local kubernetes cluster, und
   - [Docker](https://docs.docker.com/get-started/overview/) is an open-source tool that provides feasibility to **create, package, run** the software/application independent of the underlying infrastructure
   - It provides the best option to isolate the application and be executable irrespective of different environments
   - To understand docker thoroughly, please check upon this detailed [Docker architecture](https://docs.docker.com/get-started/overview/#docker-architecture) in their documentation.
-  - CLI commands for creating images
+  - Docker CLI commands can be used to building the image and performing various operation.Below are the references:
+    - [Creating the image](https://docs.docker.com/engine/reference/commandline/build/)
+    - [Other operation that can be perform with images](https://docs.docker.com/engine/reference/commandline/image/)
 - **Docker Image**<br>
   - Docker Image can be called a static **template** or **blueprint** of an application that is created using instructions mentioned in a file called **Dockerfile**
   - Docker Images are in a layered structure where each **RUN** command in **Dockerfile** will append new layer on top of previously executed command 
