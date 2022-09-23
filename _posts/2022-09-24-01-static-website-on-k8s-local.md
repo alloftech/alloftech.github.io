@@ -44,7 +44,7 @@ In this blog, we will be looking into setting up a local kubernetes cluster, und
     - [minishift](https://github.com/minishift/minishift)
   - kind can create, manage , run the k8 local cluster using docker **container** as **k8 nodes**
 - **make**<br>
-  - make is a build tool which ease the creation of executables from source code or executes set of programs/instructions/commands which are written **Makefile**
+  - make is a build tool which ease the creation of executables from source code or executes set of programs/instructions/commands which are written in **Makefile**
   - Each block in **Makefile** is referred as target where set of instruction are executed
     ```
     #!/usr/bin/env make
