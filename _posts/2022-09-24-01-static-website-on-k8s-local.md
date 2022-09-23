@@ -34,6 +34,9 @@ In this blog, we will be looking into setting up a local kubernetes cluster, und
   - Docker Hub is the default public registry where the user's can push their local images or pull the publicly available remote images
 <br><br>
 ![Docker Architecture](/assets/images/2022-09-22-00-docker-architecture.png)
+
+> Photo by [docs.docker.com](https://docs.docker.com/get-started/overview/)
+
 <br><br>
 - **kind**<br>
   - **kind** called as **kubernetes in docker**
@@ -78,6 +81,9 @@ In this blog, we will be looking into setting up a local kubernetes cluster, und
     - The multiple micro-services within the k8 cluster can access other applications(pods) through the Service component as a point of re-direction
 <br><br>
 ![Kubernetes Architecture](/assets/images/2022-09-22-00-kubernetes-architecture.png)
+
+> Photo by [phoenixnap.com](https://phoenixnap.com/kb/wp-content/uploads/2021/04/full-kubernetes-model-architecture.png)
+
 <br><br>
   - ***Ingress***<br>
     - Ingress act as Reverse Proxy in the k8 cluster
@@ -90,6 +96,9 @@ In this blog, we will be looking into setting up a local kubernetes cluster, und
     - Example: AWS Load Balancer controller which controls the Elastic Load Balancing for K8 clusters
 <br><br>
 ![Kubernetes Ingress](/assets/images/2022-09-22-00-k8-ingress.png)
+
+> Photo by [eksworkshop.com](https://www.eksworkshop.com/beginner/130_exposing-service/ingress/)
+
 <br><br>
 
 ## Hosting Your Static Web Application On Local
