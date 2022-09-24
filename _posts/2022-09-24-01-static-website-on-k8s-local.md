@@ -14,6 +14,8 @@ Our tech industry has always promoted great innovations by adopting it for bette
 
 In this blog, we will be looking into setting up a local kubernetes cluster, understanding required architecture & components and actually deploying a static website on it.
 
+<!--more-->
+
 <br><br>
 
 ## Overview of tools that will be in use for setting up a static website using kind
