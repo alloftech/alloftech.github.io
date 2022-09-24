@@ -38,7 +38,7 @@ In this blog, we will be looking into setting up a local kubernetes cluster, und
   - Docker Hub is the default public registry where the user's can push their local images or pull the publicly available remote images
 <br><br>
 
-![Docker Overview](/assets/images/2022-09-22-00-docker-architecture.png) |
+|![Docker Overview](/assets/images/2022-09-22-00-docker-architecture.png) |
 |:--:| 
 | *Docker Overview* |
 
@@ -88,7 +88,7 @@ In this blog, we will be looking into setting up a local kubernetes cluster, und
     - The multiple micro-services within the k8 cluster can access other applications(pods) through the Service component as a point of re-direction
 <br><br>
 
-![Kubernetes Overview](/assets/images/2022-09-22-00-kubernetes-architecture.png) |
+|![Kubernetes Overview](/assets/images/2022-09-22-00-kubernetes-architecture.png) |
 |:--:| 
 | *Kubernetes Overview* |
 
@@ -106,7 +106,7 @@ In this blog, we will be looking into setting up a local kubernetes cluster, und
     - Example: AWS Load Balancer controller which controls the Elastic Load Balancing for K8 clusters
 <br><br>
 
-![Kubernetes Ingress Overview](/assets/images/2022-09-22-00-k8-ingress.png) |
+|![Kubernetes Ingress Overview](/assets/images/2022-09-22-00-k8-ingress.png) |
 |:--:| 
 | *Kubernetes Ingress Overview* |
 
