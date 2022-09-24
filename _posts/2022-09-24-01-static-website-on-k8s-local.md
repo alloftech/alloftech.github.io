@@ -35,9 +35,10 @@ In this blog, we will be looking into setting up a local kubernetes cluster, und
   - [Docker Registry](https://docs.docker.com/get-started/overview/#docker-registries) is the storage for Docker Images from where we can pull and push docker images
   - Docker Hub is the default public registry where the user's can push their local images or pull the publicly available remote images
 <br><br>
-![Docker Architecture](/assets/images/2022-09-22-00-docker-architecture.png) |
+
+![Docker Overview](/assets/images/2022-09-22-00-docker-architecture.png) |
 |:--:| 
-| *Docker Architecture* |
+| *Docker Overview* |
 
 > Photo by [docs.docker.com](https://docs.docker.com/get-started/overview/)
 
@@ -84,9 +85,10 @@ In this blog, we will be looking into setting up a local kubernetes cluster, und
     - Here comes a resource of k8 called as Service which logically group the pods with `selector` keyword
     - The multiple micro-services within the k8 cluster can access other applications(pods) through the Service component as a point of re-direction
 <br><br>
-![Kubernetes Architecture](/assets/images/2022-09-22-00-kubernetes-architecture.png) |
+
+![Kubernetes Overview](/assets/images/2022-09-22-00-kubernetes-architecture.png) |
 |:--:| 
-| *Kubernetes Architecture* |
+| *Kubernetes Overview* |
 
 > Photo by [phoenixnap.com](https://phoenixnap.com/kb/wp-content/uploads/2021/04/full-kubernetes-model-architecture.png)
 
@@ -101,9 +103,10 @@ In this blog, we will be looking into setting up a local kubernetes cluster, und
     - It defines how ingress should work
     - Example: AWS Load Balancer controller which controls the Elastic Load Balancing for K8 clusters
 <br><br>
-![Kubernetes Ingress](/assets/images/2022-09-22-00-k8-ingress.png) |
+
+![Kubernetes Ingress Overview](/assets/images/2022-09-22-00-k8-ingress.png) |
 |:--:| 
-| *Kubernetes Ingress* |
+| *Kubernetes Ingress Overview* |
 
 > Photo by [eksworkshop.com](https://www.eksworkshop.com/beginner/130_exposing-service/ingress/)
 
