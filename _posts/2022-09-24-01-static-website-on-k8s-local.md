@@ -14,7 +14,103 @@ Our tech industry has always promoted great innovations by adopting it for bette
 
 In this blog, we will be looking into setting up a local kubernetes cluster, understanding required architecture & components and actually deploying a static website on it.
 
-<!--more-->
+<br><br>
+
+## Overview of tools that will be in use for setting up a static website using kind
+
+- **Docker**<br>
+  - [Docker](https://docs.docker.com/get-started/overview/) is an open-source tool that provides feasibility to **create, package, run** the software/application independent of the underlying infrastructure
+  - It provides the best option to isolate the application and be executable irrespective of different environments
+  - To understand docker thoroughly, please check upon this detailed [Docker architecture](https://docs.docker.com/get-started/overview/#docker-architecture) in their documentation.
+- **Docker Image**<br>
+  - Docker Image can be called a static **template** or **blueprint** of an application that is created using instructions mentioned in a file called **Dockerfile**
+  - Docker Images are in a layered structure where each **RUN** command in **Dockerfile** will append new layer on top of previously executed command
+  - Docker CLI commands can be used to building the image and performing various operation.Below are the references:
+    - [Creating the image](https://docs.docker.com/engine/reference/commandline/build/)
+    - [Other operation that can be perform with images](https://docs.docker.com/engine/reference/commandline/image/) 
+- **Docker Container**<br>
+  - Running instance of Docker Image is called as **Container**
+  - Docker is also called as Containerization tool where application images are self-contained with all pre-requisites of source code, libraries, configurations, dependent packages, etc..
+- **Docker Registry**<br>
+  - [Docker Registry](https://docs.docker.com/get-started/overview/#docker-registries) is the storage for Docker Images from where we can pull and push docker images
+  - Docker Hub is the default public registry where the user's can push their local images or pull the publicly available remote images
+<br><br>
+
+![Docker Overview](/assets/images/2022-09-22-00-docker-architecture.png) |
+|:--:| 
+| *Docker Overview* |
+
+> Photo by [docs.docker.com](https://docs.docker.com/get-started/overview/)
+
+<br><br>
+- **kind**<br>
+  - **kind** called as **kubernetes in docker**
+  - There are multiple tools used which helps in creating k8 cluster on local system for setting up development environment
+    - [kind](https://github.com/kubernetes-sigs/kind)
+    - [minikube](https://github.com/kubernetes/minikube)
+    - [CodeReady Containers](https://github.com/code-ready/crc)
+    - [minishift](https://github.com/minishift/minishift)
+  - kind can create, manage , run the k8 local cluster using docker **container** as **k8 nodes**
+- **make**<br>
+  - make is a build tool which ease the creation of executables from source code or executes set of programs/instructions/commands which are written in **Makefile**
+  - Each block in **Makefile** is referred as target where set of instruction are executed
+    ```
+    #!/usr/bin/env make
+    .PHONY: test_target
+
+    test_target: dependent_on_target
+        command1 && \
+          command2
+    ```
+  - Command to execute any target : `make <target name>`
+- **kubectl**<br>
+  - It is a command line tool using which commands can be executed on Kubernetes clusters 
+  - `kubectl` is a CLI that is run with many options available for managing or getting descriptions for any components of k8(pods, deployments, services, ingress, configMap, etc...) 
+  - In the backend,it makes an API call to performs all managing actions on k8 clusters
+- **Kubernetes manifest/components**<br>
+  - ***Pods***<br>
+    - In the K8 cluster the applications are deployed as containers on worker nodes
+    - They are not deployed directly on worker nodes -> ENCAPSULATED in k8 object called POD
+    - POD is a single instance of an application, the smallest object that can be created in the K8 cluster
+  - ***Deployment***<br>
+    - k8 Deployment is an encapsulation of Pods where its manifest declaration includes which image to be used, the number of Pods(application containers) to be run, number of replicas for the same application to maintain high availability
+    - Deployment provides features:
+      - Rolling Updates (Pods are replaced in rolling fashion ensuring high availability of application)
+      - Seamless Undo/Resume changes
+      - Rollbacks
+    - Deployments encapsulates ReplicaSet --> Deployment( ReplicaSet ( Pod ( Container )  ) )
+  - ***Service***<br>
+    - Pods are dynamically created and destroyed due to which it does not have a persistent IP address
+    - However, the Deployment component abstracts the pods but internal access to the pods cannot rely on the dynamic change of pods lifecycle(creation & deletion)
+    - Here comes a resource of k8 called as Service which logically group the pods with `selector` keyword
+    - The multiple micro-services within the k8 cluster can access other applications(pods) through the Service component as a point of re-direction
+<br><br>
+
+![Kubernetes Overview](/assets/images/2022-09-22-00-kubernetes-architecture.png) |
+|:--:| 
+| *Kubernetes Overview* |
+
+> Photo by [phoenixnap.com](https://phoenixnap.com/kb/wp-content/uploads/2021/04/full-kubernetes-model-architecture.png)
+
+<br><br>
+  - ***Ingress***<br>
+    - Ingress act as Reverse Proxy in the k8 cluster
+    - It's the resource that is an interface between the outside network(external access) and the Kubernetes cluster
+    - So if the outside world needs to interact/access any application in the k8 cluster their request will go through the ingress component
+    - An Ingress manifest includes the hosts, re-direction path or rules that will internally make a request to the Service component
+  - ***Ingress Controller***<br>
+    - An Ingress controller is required to manage and controls the ingress component
+    - It defines how ingress should work
+    - Example: AWS Load Balancer controller which controls the Elastic Load Balancing for K8 clusters
+<br><br>
+
+![Kubernetes Ingress Overview](/assets/images/2022-09-22-00-k8-ingress.png) |
+|:--:| 
+| *Kubernetes Ingress Overview* |
+
+> Photo by [eksworkshop.com](https://www.eksworkshop.com/beginner/130_exposing-service/ingress/)
+
+<br><br>
 
 ## Hosting Your Static Web Application On Local
 
