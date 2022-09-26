@@ -92,6 +92,7 @@ In this blog, we will be looking into setting up a local kubernetes cluster, und
     |![Kubernetes Overview](/assets/images/2022-09-22-00-kubernetes-architecture.png) |
     |:--:| 
     | *Kubernetes Overview* |
+
     <br><br>
 
   - ***configMap***<br>
@@ -122,6 +123,7 @@ In this blog, we will be looking into setting up a local kubernetes cluster, und
     |![Kubernetes Ingress Overview](/assets/images/2022-09-22-00-k8-ingress.png) |
     |:--:| 
     | *Kubernetes Ingress Overview* |
+
     <br><br>
 
 - **helm**<br>
@@ -147,9 +149,10 @@ In this blog, we will be looking into setting up a local kubernetes cluster, und
   |![Helm Overview](/assets/images/2022-09-22-00-helm.png) |
   |:--:| 
   | *Helm Overview* |
+
   <br><br>
 
-## Hosting Your Static Web Application On Local
+## **Hosting Your Static Web Application On Local**
 
 Now without any further delay let's hop into deploying your static website on local kubernetes cluster. 
 <br>
