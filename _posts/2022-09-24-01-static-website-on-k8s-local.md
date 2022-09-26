@@ -3,7 +3,7 @@ layout: post
 title: "Deploy your static web app on local using kubernetes"
 date: 2022-09-24
 last_modified_at: 2022-09-24
-cover_image: 2022-09-13-01-cover.png
+cover_image: 2022-09-24-01-cover.png
 author: Ankur Singh
 categories: Kubernetes
 excerpt_separator: <!--more-->
@@ -18,7 +18,7 @@ In this blog, we will be looking into setting up a local kubernetes cluster, und
 
 <br><br>
 
-## Overview of tools that will be in use for setting up a static website using kind
+## Overview of tools & concepts
 
 - **Docker**<br>
   - [Docker](https://docs.docker.com/get-started/overview/) is an open-source tool that provides feasibility to **create, package, run** the software/application independent of the underlying infrastructure
@@ -110,13 +110,15 @@ In this blog, we will be looking into setting up a local kubernetes cluster, und
 |:--:| 
 | *Kubernetes Ingress Overview* |
 
-> Photo by [eksworkshop.com](https://www.eksworkshop.com/beginner/130_exposing-service/ingress/)
+> Photo by [eksworkshop.com](https://www.eksworkshop.com/beginner/240_exposing-service/ingress/)
 
 <br><br>
 
 ## Hosting Your Static Web Application On Local
 
 Now without any further delay let's hop into deploying your static website on local kubernetes cluster. 
+<br>
+### <span style="text-decoration: underline"> Get The Template </span>
 
 To ease up the process, we will use a [boiler-plate](https://github.com/sankur-codes/k8s-basic-project) which is specifically created for our use case and clone it in our local machine. The `README.md` file gives a step-by-step approach for making your static website up and running on local.
 
@@ -129,14 +131,16 @@ To ease up the process, we will use a [boiler-plate](https://github.com/sankur-c
 - Change directory to that of the cloned repository by running `cd k8s-basic-project`
 
 > Note : Please refer steps mentioned in `README.md` file of the repository hereafter. We will be thoroughly understanding each step mentioned in the file as we move ahead. So fire up those brain cells !!
-
 <br><br>
+### <span style="text-decoration: underline"> Install Pre-requisites </span>
 
 First and foremost, we will make sure all **pre-requisites are met** as mentioned in the `README.md` file of the repository. Installations on their respective documentations are pretty straight-forward and easy to follow. later, verify your installations through cli.
 
-![Installation Verification](/assets/images/2022-09-13-01-intallations.png)
-
+|![Installation Verification](/assets/images/2022-09-24-01-intallations.png) |
+|:--:| 
+| *Verification of Installations* |
 <br><br>
+### <span style="text-decoration: underline"> Containerize Your WebApp </span>
 
 Now, as we know that k8s is a _container orchestration tool_ so we will be running our website in an isolated **container**. To run our application in containers we will have to create an **image** bundled with our application code & all dependencies needed to run our website.
 
@@ -145,7 +149,7 @@ Formerly, copy your static website code in `website` folder of the repository <b
 
 <br>
 
-To build a docker image, there is a generic Dockerfile already present in the repository. Let's break it out for understanding : 
+To build a docker image, there is a generic `Dockerfile` already present in the repository. Let's break it out for understanding : 
 - `FROM nginx` : Pulls latest [nginx](https://hub.docker.com/_/nginx/tags) image from docker hub
 - `LABEL maintainer="Ankur Singh"` : Just a label. you can add your name as maintainer if you want
 - `COPY website/ /usr/share/nginx/html/` : Copies your website code to appropriate folder
@@ -161,6 +165,94 @@ What will this command do ?
 - First is `sudo docker build -t $(imageName):$(imageTag)`. It will refer the `Dockerfile` and build an image called **mywebapp:1.0**
 - Second command is `sudo docker run -d --rm --name $(containerName) -p $(hostPort):80 $(imageName):$(imageTag)` which creates the container. It will use the image **mywebapp:1.0** and create a container named **container_app** whose port **80** is exposed to port **5000** of your system
 
-![WebApp Containerization](/assets/images/2022-09-13-01-containerization.png)
+|![WebApp Containerization](/assets/images/2022-09-24-01-containerization.png)|
+|:--:| 
+| *Verification of WebApp Containerization* |
 
 Also visit `127.0.0.1:5000` in your browser to check if your static web application is accessible
+
+Congrats !! You have successfully containerized your application. 
+
+Once tested, we won't need this container anymore.<br> 
+Free the resources by running `make stop containerName=container_app` (check upon the **stop** target in _Makefile_)
+<br><br>
+### <span style="text-decoration: underline"> Create Local k8s Cluster & Image Registry </span>
+
+Moving further we will create our local cluster using `kind` and for the cluster to be able to get the image of our application (*mywebapp:1.0*), we will create a local image registry to store the image and link it to the cluster. 
+
+With our Makefile, this becomes a cakewalk. Run `make create_kind_cluster_with_registry clusterName=webapplication` 
+<br>
+
+This command will execute the **create_kind_cluster_with_registry** target in make file. This particular target in turn calls **create_kind_cluster** which runs & **connect_registry_to_kind** targets which in turn call other targets and so on. (check upon other target calls & commands being executed in _Makefile_. In case of any doubt, feel free to ask in comments) 
+<br>
+
+Eventually : 
+- A local kubernetes cluster called webapplication will be created. Verify it using `sudo kind get clusters`
+- A local registry will be created as a container(local-registry) to store our website image. To verify, run `sudo docker ps | grep local-registry`
+- Image registry will be connected to our local kubernetes cluster for it to pull our webapp image during deployment
+
+If we follow the `Makefile` instructions properly, we can see that the creation of cluster and its connection to registry takes some initialization configuration files viz _cluster/kind_config.yaml_ & _cluster/kind_configmap.yaml_. Let's look at necessary instructions of those files.
+
+|![Cluster Config file](/assets/images/2022-09-24-01-config-file.jpg)|
+|:--:| 
+| *kind_config.yaml for cluster configurations* |
+
+|![Registry Data File](/assets/images/2022-09-24-01-configmap-file.jpg)|
+|:--:| 
+| *kind_configmap.yaml for registry details* |
+<br><br>
+### <span style="text-decoration: underline"> Setting Up Cluster </span>
+
+With a local k8s cluster and image registry of our own, we are just three steps away to be all set to deploy our web application. 
+- Firstly, to make our image available to our cluster, we will have to push it to the local image registry.
+  - Run `make push_image_to_local_registry imageName=mywebapp imageTag=1.0`
+  - It will first tag the image `mywebapp:1.0` with `localhost:5000/mywebapp:1.0`
+  - Then it pushes it to the local image registry
+- Secondly, to make our service accessible from outside the cluster via _Ingress_ object, we will have to install **ingress controller** on it. 
+  - Run `sudo kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/kind/deploy.yaml`
+  - It will install necessary resources for ingress object to be functional on the cluster
+  - To check upon all the resources, run , `sudo kubectl get all -n ingress-nginx`
+- lastly, we will be customizing values of a few variables as per our application.
+  - in _cluster/chart/Chart.yaml_
+    - set _name: mywebapp_
+    - set _version: 0.0.1_
+    - set _appVersion: 0.0.1_
+  - in _cluster/chart/values.yaml_
+    - set _appName: mywebapp_
+    - set _imageName: localhost:5000/mywebapp:1.0_
+    - set _serviceName: mywebapp-svc_
+    - set _hostName: mywebapp.com_ ( Ensure line `127.0.0.1 mywebapp.com` is appended in **/etc/hosts** file of your system)
+<br><br>
+### <span style="text-decoration: underline"> Deploying Our Web Application, Finally !! </span>
+
+We have reached our destination !! 
+
+As we are using **_helm_** charts, we won't have to create individual resources. Rather our deployment, service & ingress resources will be created by helm using definitions in _cluster/chart/templates/_ folder & values from _cluster/chart/values.yaml_ file. Below is a overview of each of the resource definitions we are using :
+
+
+|![Deployment File](/assets/images/2022-09-24-01-deployment-file.png)|
+|:--:| 
+| *deployment.yaml file for creating deployment resource* |
+
+
+|![Service File](/assets/images/2022-09-24-01-service-file.png)|
+|:--:| 
+| *service.yaml file for creating service resource* |
+
+
+|![Ingress File](/assets/images/2022-09-24-01-ingress-file.png)|
+|:--:| 
+| *ingress.yaml file for creating ingress resource* |
+
+
+And ofcourse, we have a target for deploying our application as well. So now that we know what each of the resource definition will be doing,we deploy your application by running <br>`make install_app appName=mywebapp`
+
+Simply visit `mywebapp.com` in your browser to feel good with your static web application up & running.
+
+<br><br>
+
+## AND WE ARE DONE !!
+
+This was all about our web application being deployed on local system using kubernetes. Its recommended to go ahead and play around with the manifest files and configration to explore & add new resources to your cluster. 
+
+You can even experiment deploying the cluster with the application over any of the Kubernetes Service on cloud platform and have your application accessed over the internet !
