@@ -27,8 +27,8 @@ In this blog, we will be looking into setting up a local kubernetes cluster, und
   - Docker Image can be called a static **template** or **blueprint** of an application that is created using instructions mentioned in a file called **Dockerfile**
   - Docker Images are in a layered structure where each **RUN** command in **Dockerfile** will append new layer on top of previously executed command
   - Docker CLI commands can be used to building the image and performing various operation.Below are the references:
-    - [Creating the image](https://docs.docker.com/engine/reference/commandline/build/)
-    - [Other operation that can be perform with images](https://docs.docker.com/engine/reference/commandline/image/) 
+    - [Creating](https://docs.docker.com/engine/reference/commandline/build/) the image
+    - [Other](https://docs.docker.com/engine/reference/commandline/image/) operation that can be perform with images
 - **Docker Container**<br>
   - Running instance of Docker Image is called as **Container**
   - Docker is also called as Containerization tool where application images are self-contained with all pre-requisites of source code, libraries, configurations, dependent packages, etc..
@@ -37,11 +37,11 @@ In this blog, we will be looking into setting up a local kubernetes cluster, und
   - Docker Hub is the default public registry where the user's can push their local images or pull the publicly available remote images
 <br><br>
 
+> Photo by [docs.docker.com](https://docs.docker.com/get-started/overview/)
+
 |![Docker Overview](/assets/images/2022-09-22-00-docker-architecture.png) |
 |:--:| 
 | *Docker Overview* |
-
-> Photo by [docs.docker.com](https://docs.docker.com/get-started/overview/)
 
 <br><br>
 - **kind**<br>
@@ -85,15 +85,27 @@ In this blog, we will be looking into setting up a local kubernetes cluster, und
     - However, the Deployment component abstracts the pods but internal access to the pods cannot rely on the dynamic change of pods lifecycle(creation & deletion)
     - Here comes a resource of k8 called as Service which logically group the pods with `selector` keyword
     - The multiple micro-services within the k8 cluster can access other applications(pods) through the Service component as a point of re-direction
-<br><br>
+    <br><br>
 
-|![Kubernetes Overview](/assets/images/2022-09-22-00-kubernetes-architecture.png) |
-|:--:| 
-| *Kubernetes Overview* |
+    > Photo by [phoenixnap.com](https://phoenixnap.com/kb/wp-content/uploads/2021/04/full-kubernetes-model-architecture.png)
 
-> Photo by [phoenixnap.com](https://phoenixnap.com/kb/wp-content/uploads/2021/04/full-kubernetes-model-architecture.png)
+    |![Kubernetes Overview](/assets/images/2022-09-22-00-kubernetes-architecture.png) |
+    |:--:| 
+    | *Kubernetes Overview* |
+    <br><br>
 
-<br><br>
+  - ***configMap***<br>
+    - It is a component which enables us to consolidate data(non-confidential) and be stored as a key-value pair and can be consumed by other manifests(deployment/service/etc.. yaml files) of the application
+    - The referencing of the key in other manifest yaml file can be done as below with **env** block
+      ```
+      env:
+      - name: test_var
+        valueFrom:
+          configMapKeyRef:
+            name: <name of the configMap where key-value pair is manintained>
+            key: <key name mentioned in configMap>
+      ```
+
   - ***Ingress***<br>
     - Ingress act as Reverse Proxy in the k8 cluster
     - It's the resource that is an interface between the outside network(external access) and the Kubernetes cluster
@@ -103,15 +115,39 @@ In this blog, we will be looking into setting up a local kubernetes cluster, und
     - An Ingress controller is required to manage and controls the ingress component
     - It defines how ingress should work
     - Example: AWS Load Balancer controller which controls the Elastic Load Balancing for K8 clusters
-<br><br>
+    <br><br>
 
-|![Kubernetes Ingress Overview](/assets/images/2022-09-22-00-k8-ingress.png) |
-|:--:| 
-| *Kubernetes Ingress Overview* |
+    > Photo by [eksworkshop.com](https://www.eksworkshop.com/beginner/240_exposing-service/ingress/)
 
-> Photo by [eksworkshop.com](https://www.eksworkshop.com/beginner/240_exposing-service/ingress/)
+    |![Kubernetes Ingress Overview](/assets/images/2022-09-22-00-k8-ingress.png) |
+    |:--:| 
+    | *Kubernetes Ingress Overview* |
+    <br><br>
 
-<br><br>
+- **helm**<br>
+  - [Helm](https://helm.sh/docs/helm/helm_package/) is a **package manager** for Kubernetes apps
+  - Configuring the manifest of kubernetes individually is not the best option when it comes to setup app in different environments with chances of deploying frequently
+  - k8 manifests is a yaml description of different component required by the app. It can be packaged together as helm package with some standard directory structure
+  -  Below is a sample example of any helm package archive
+      ```
+      chart_name/
+        Chart.yaml  : (includes metadata, name , description of chart)
+        values.yaml : (includes key:value pair which are templatise in the manifest yaml file)
+        templates/  : (includes templatise manifest yaml file for each k8 component required by the app)
+        charts/     : (includes dependencies charts for the app)
+      ```
+
+  - Helm provide feasibilty to manage, configure, deploy application in k8 using **helm** [CLI](https://helm.sh/docs/helm/)<br>
+  Example: 
+  ```helm install <chart_name>```
+  <br>
+
+  > Photo by [regner.com.mx](https://regner.com.mx/helm-charts-quick-start/)
+
+  |![Helm Overview](/assets/images/2022-09-22-00-helm.png) |
+  |:--:| 
+  | *Helm Overview* |
+  <br><br>
 
 ## Hosting Your Static Web Application On Local
 
