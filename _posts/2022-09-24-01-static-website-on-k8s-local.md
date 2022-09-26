@@ -15,7 +15,6 @@ Our tech industry has always promoted great innovations by adopting it for bette
 In this blog, we will be looking into setting up a local kubernetes cluster, understanding required architecture & components and actually deploying a static website on it.
 
 <!--more-->
-
 <br><br>
 
 ## Overview of tools & concepts
@@ -131,6 +130,7 @@ To ease up the process, we will use a [boiler-plate](https://github.com/sankur-c
 - Change directory to that of the cloned repository by running `cd k8s-basic-project`
 
 > Note : Please refer steps mentioned in `README.md` file of the repository hereafter. We will be thoroughly understanding each step mentioned in the file as we move ahead. So fire up those brain cells !!
+
 <br><br>
 ### <span style="text-decoration: underline"> Install Pre-requisites </span>
 
@@ -139,6 +139,7 @@ First and foremost, we will make sure all **pre-requisites are met** as mentione
 |![Installation Verification](/assets/images/2022-09-24-01-intallations.png) |
 |:--:| 
 | *Verification of Installations* |
+
 <br><br>
 ### <span style="text-decoration: underline"> Containerize Your WebApp </span>
 
@@ -200,6 +201,7 @@ If we follow the `Makefile` instructions properly, we can see that the creation 
 |![Registry Data File](/assets/images/2022-09-24-01-configmap-file.jpg)|
 |:--:| 
 | *kind_configmap.yaml for registry details* |
+
 <br><br>
 ### <span style="text-decoration: underline"> Setting Up Cluster </span>
 
@@ -222,6 +224,7 @@ With a local k8s cluster and image registry of our own, we are just three steps 
     - set _imageName: localhost:5000/mywebapp:1.0_
     - set _serviceName: mywebapp-svc_
     - set _hostName: mywebapp.com_ ( Ensure line `127.0.0.1 mywebapp.com` is appended in **/etc/hosts** file of your system)
+
 <br><br>
 ### <span style="text-decoration: underline"> Deploying Our Web Application, Finally !! </span>
 
