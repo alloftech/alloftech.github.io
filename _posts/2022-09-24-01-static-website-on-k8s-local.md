@@ -37,11 +37,9 @@ In this blog, we will be looking into setting up a local kubernetes cluster, und
   - Docker Hub is the default public registry where the user's can push their local images or pull the publicly available remote images
 <br><br>
 
-> Photo by [docs.docker.com](https://docs.docker.com/get-started/overview/)
-
 |![Docker Overview](/assets/images/2022-09-22-00-docker-architecture.png) |
 |:--:| 
-| *Docker Overview* |
+| *Docker Overview* (Photo by [docs.docker.com](https://docs.docker.com/get-started/overview/)) |
 
 <br><br>
 - **kind**<br>
@@ -87,11 +85,9 @@ In this blog, we will be looking into setting up a local kubernetes cluster, und
     - The multiple micro-services within the k8 cluster can access other applications(pods) through the Service component as a point of re-direction
     <br><br>
 
-    > Photo by [phoenixnap.com](https://phoenixnap.com/kb/wp-content/uploads/2021/04/full-kubernetes-model-architecture.png)
-
     |![Kubernetes Overview](/assets/images/2022-09-22-00-kubernetes-architecture.png) |
     |:--:| 
-    | *Kubernetes Overview* |
+    | *Kubernetes Overview* (Photo by [phoenixnap.com](https://phoenixnap.com/kb/wp-content/uploads/2021/04/full-kubernetes-model-architecture.png)) |
 
     <br><br>
 
@@ -99,12 +95,10 @@ In this blog, we will be looking into setting up a local kubernetes cluster, und
     - It is a component which enables us to consolidate data(non-confidential) and be stored as a key-value pair and can be consumed by other manifests(deployment/service/etc.. yaml files) of the application
     - The referencing of the key in other manifest yaml file can be done as below with **env** block
       ```
-      env:
-      - name: test_var
-        valueFrom:
-          configMapKeyRef:
-            name: <name of the configMap where key-value pair is manintained>
-            key: <key name mentioned in configMap>
+      valueFrom:
+        configMapKeyRef:
+          name: <name of the configMap where key-value pair is manintained>
+          key: <key name mentioned in configMap>
       ```
 
   - ***Ingress***<br>
@@ -118,11 +112,9 @@ In this blog, we will be looking into setting up a local kubernetes cluster, und
     - Example: AWS Load Balancer controller which controls the Elastic Load Balancing for K8 clusters
     <br><br>
 
-    > Photo by [eksworkshop.com](https://www.eksworkshop.com/beginner/240_exposing-service/ingress/)
-
     |![Kubernetes Ingress Overview](/assets/images/2022-09-22-00-k8-ingress.png) |
     |:--:| 
-    | *Kubernetes Ingress Overview* |
+    | *Kubernetes Ingress Overview* (Photo by [eksworkshop.com](https://www.eksworkshop.com/beginner/240_exposing-service/ingress/)) |
 
     <br><br>
 
@@ -144,11 +136,9 @@ In this blog, we will be looking into setting up a local kubernetes cluster, und
   ```helm install <chart_name>```
   <br>
 
-  > Photo by [regner.com.mx](https://regner.com.mx/helm-charts-quick-start/)
-
   |![Helm Overview](/assets/images/2022-09-22-00-helm.png) |
   |:--:| 
-  | *Helm Overview* |
+  | *Helm Overview* (Photo by [regner.com.mx](https://regner.com.mx/helm-charts-quick-start/)) |
 
   <br><br>
 
