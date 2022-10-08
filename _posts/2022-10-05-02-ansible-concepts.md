@@ -1,0 +1,101 @@
+---
+layout: post
+title: "Run python faster using PyPy"
+date: 2022-10-08
+last_modified_at: 2022-10-08
+cover_image: 2022-10-08-00-pypy-logo.jpg
+author: Sanket Benke
+categories: Python
+excerpt_separator: <!--more-->
+---
+
+
+>               "If you want your code to run faster,
+                  you should probably just use PyPy."
+                                            - Guido van Rossum (Creater of python)
+
+<!--more-->
+<br><br>
+
+
+Lets first understand how python program is executed.
+
+|![CPython Implementation](/assets/images/2022-10-08-00-CPython-Implementation.png) |
+
+ - First you write your python code in file let call that file foo.py.
+ - You run python command
+   > python foo.py
+
+ - Of course computer doesn't understand this high level language. Computer works only on machine languages. To convert your code to machine language, python perform following steps:
+
+    - Python code gets compiled to bytecode and gives .pyc file, in our case foo.pyc
+    - This .pyc file then gets interpreted to machine language in PVM(Python Virtual Machine) and finally you get your output
+
+ - This process of implementation is CPython.
+
+ ## CPython:
+
+ - CPython is the default byte-code interpreter of Python, which is written in C and python.
+ - When you install python from https://www.python.org/, default iterpreter is CPython.
+ - CPython basically convert your code to bytecode first and then interpreted this bytecode to machine language and gives you output.
+ - CPython is slow
+
+ ## PyPy:
+
+ - As we now know, CPython is slow, to fill this gap, PyPy is used.
+ - PyPy is written in RPython(Restricted Python - a subset of python.)
+ - But what makes PyPy fast? It is JIT Compiler.
+ - PyPy uses JIT or Just-in-Time compilation approach to compile the source code into native machine code instead of bytecode. Thereby making the code to run faster.
+ - PyPy is a compiler and CPython is interpreter.
+ - PyPy workd faster for only pure python code.
+ - So the case where PyPy works best is when executing long-running programs where a significant fraction of the time is spent executing Python code.
+
+ - Features of PyPy:
+   - Speed (4.4 times faster than CPython on an average.)
+   - Memory usage
+   - Stackless
+
+ - Drawbacks of PyPy:
+   - if your code doesn't run for at least a few seconds, then the JIT compiler won't have enough time to warm up.
+   - If all the time is spent in run-time libraries (i.e. in C functions), and not actually running Python code, the JIT compiler will not help.
+   - Not suitable for data science libraries as it contains C functions and not pure python code.
+
+
+## Installation of PyPy3:
+
+- Ubuntu:
+
+> sudo add-apt-repository ppa:pypy/ppa
+
+> sudo apt update
+
+> sudo apt install pypy3
+
+- Mac:
+
+> brew install pypy3
+
+- Windows:
+
+> Download Windows Binary file from https://www.pypy.org/download.html
+
+## Installation of Pip:
+
+ - Download the latest version of get-pip.py from https://bootstrap.pypa.io/.
+ - go to the folder where you download get-pip and run following cmd:
+ > pypy get-pip.py
+
+
+ Now lets compare time taken by CPython vs PyPy
+
+ |![CPython](/assets/images/2022-10-08-00-python3-time-taken.png) |
+
+ |![PyPy](/assets/images/2022-10-08-00-pypy3-time-taken.png) |
+
+
+As we can see by above example, pypy took only 5 seconds to complete and cpython took 2 minutes and 20 seconds to complete.
+So use pypy3 for pure python code and use CPython if you have libraries which are in C language.
+
+
+References:
+- https://www.pypy.org/
