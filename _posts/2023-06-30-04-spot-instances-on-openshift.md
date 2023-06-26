@@ -24,7 +24,6 @@ Red Hat Openshift is available as a managed service on major cloud platforms pro
 ## **Pre-requisites**
 - [az cli](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli) installed on your system.
 - A [public](https://learn.microsoft.com/en-us/azure/openshift/tutorial-create-cluster) or [private](https://learn.microsoft.com/en-us/azure/openshift/howto-create-private-cluster-4x) openshift cluster deployed on Azure.
-- Understanding of [MachineSets](https://docs.openshift.com/container-platform/4.8/machine_management/creating_machinesets/creating-machineset-azure.html) in 
 
  <br><br>
 
@@ -37,7 +36,7 @@ Red Hat Openshift is available as a managed service on major cloud platforms pro
   - [Openshift](https://www.redhat.com/en/technologies/cloud-computing/openshift) is a containerization platform developed by Red Hat. It provides a complete ecosystem for deploying, managing, and scaling containerized applications.
   - It is built upon Kubernetes, an open-source container orchestration platform, and adds additional features and capabilities to make it more accessible and developer-friendly.
 - **MachineSets**<br>
-  - In OpenShift, a MachineSet is a Kubernetes object used to manage and control the deployment and scaling of worker nodes within a cluster.
+  - In OpenShift, a [MachineSet](https://docs.openshift.com/container-platform/4.8/machine_management/creating_machinesets/creating-machineset-azure.html) is a Kubernetes object used to manage and control the deployment and scaling of worker nodes within a cluster.
   - A MachineSet defines the desired state of a group of machines, specifying the number of replicas, the machine template (which includes details such as the machine image, instance type, and other configurations), and the rules for scaling up or down based on resource requirements.
 
 <br><br>
@@ -60,11 +59,11 @@ Azure Red Hat Openshift has provisions to leverage the usage of spot instances a
 After creation of cluster, as we will be using web interface provided by Red Hat, URL for the console will be required. Further, we will require creadentials to access the cluster and login to the web interface. We will use `az`cli to get these information.<br>
 Before beginning with the step-by-step practical, make sure to have `CLUSTER` & `RESOURCEGROUP` environment variable created with correct values of name of cluster and resource group, respectively.<br><br>
 
-Lets go !!
+Lets go now !! 🚀
 
 <br><br>
 
-<iframe src="https://scribehow.com/embed/Replacing_a_VM_node_with_a_Spot_node_on_Azure_Red_Hat_Openshift__CMgYh7vSRUa7QigAY5-dGA?skipIntro=true" width="100%" height="650" allowfullscreen frameborder="0"></iframe>
+<iframe src="https://scribehow.com/embed/Replacing_a_VM_node_with_a_Spot_node_on_Azure_Red_Hat_Openshift__CMgYh7vSRUa7QigAY5-dGA" width="100%" height="640" allowfullscreen frameborder="0"></iframe>
 
 <br><br>
 
