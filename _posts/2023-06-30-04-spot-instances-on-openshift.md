@@ -33,3 +33,9 @@ Red Hat Openshift is available as a managed service on major cloud platforms pro
   - something something
   - another thing
 
+<br><br>
+
+
+<iframe src="https://scribehow.com/embed/Guide_to_replace_a_worker_Vm_with_a_spot_instance__CMgYh7vSRUa7QigAY5-dGA?as=scrollable&skipIntro=true" width="100%" height="640" allowfullscreen frameborder="0"></iframe>
+
+
