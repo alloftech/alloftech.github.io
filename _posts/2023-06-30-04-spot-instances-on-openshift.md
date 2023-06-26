@@ -22,18 +22,23 @@ Red Hat Openshift is available as a managed service on major cloud platforms pro
 
 
 ## **Pre-requisites**
-- Understanding of [spot instances](https://learn.microsoft.com/en-us/azure/virtual-machines/spot-vms).
 - [az cli](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli) installed on your system.
 - A [public](https://learn.microsoft.com/en-us/azure/openshift/tutorial-create-cluster) or [private](https://learn.microsoft.com/en-us/azure/openshift/howto-create-private-cluster-4x) openshift cluster deployed on Azure.
-- Understanding of [MachineSets](https://docs.openshift.com/container-platform/4.8/machine_management/creating_machinesets/creating-machineset-azure.html) in [Openshift](https://www.redhat.com/en/technologies/cloud-computing/openshift)
+- Understanding of [MachineSets](https://docs.openshift.com/container-platform/4.8/machine_management/creating_machinesets/creating-machineset-azure.html) in 
 
  <br><br>
 
-## **Briefing On Terminologies & Concepts**
+## **Briefing On Technologies & Concepts**
 
-- **Something**<br>
-  - something something
-  - another thing
+- **Spot Instance**<br>
+  - The concept of [spot instances](https://learn.microsoft.com/en-us/azure/virtual-machines/spot-vms) is based on a dynamic pricing model. Cloud providers allocate their excess or unused capacity to spot instances, which are made available to users through a bidding system. 
+  - Users specify the maximum price they are willing to pay per hour for the instance, and if the current spot price is below their bid, they can acquire the instance.
+- **Openshift**<br>
+  - [Openshift](https://www.redhat.com/en/technologies/cloud-computing/openshift) is a containerization platform developed by Red Hat. It provides a complete ecosystem for deploying, managing, and scaling containerized applications.
+  - It is built upon Kubernetes, an open-source container orchestration platform, and adds additional features and capabilities to make it more accessible and developer-friendly.
+- **MachineSets**<br>
+  - In OpenShift, a MachineSet is a Kubernetes object used to manage and control the deployment and scaling of worker nodes within a cluster.
+  - A MachineSet defines the desired state of a group of machines, specifying the number of replicas, the machine template (which includes details such as the machine image, instance type, and other configurations), and the rules for scaling up or down based on resource requirements.
 
 <br><br>
 
@@ -52,7 +57,7 @@ computation requirements as nodes of type `Standard_D8s_v3`.
 
 ## **How To Use Spot Instances For ARO Clusters ?**
 Azure Red Hat Openshift has provisions to leverage the usage of spot instances as nodes for clusters. <br>
-After creation of cluster, as we will be using web interface provided by Red Hat, URL for the console will be required. Further, we will require creadentials to access the cluster and login to the web interface. <br>
+After creation of cluster, as we will be using web interface provided by Red Hat, URL for the console will be required. Further, we will require creadentials to access the cluster and login to the web interface. We will use `az`cli to get these information.<br>
 Before beginning with the step-by-step practical, make sure to have `CLUSTER` & `RESOURCEGROUP` environment variable created with correct values of name of cluster and resource group, respectively.<br><br>
 
 Lets go !!
@@ -63,4 +68,17 @@ Lets go !!
 
 <br><br>
 
+## **Some Best Practices To Keep In Mind**
+- Even though it seems tempting to do, but master nodes should (can) never be run as a spot instance.
+- Thorough research and testing is required to create a resilient architecture integrating spot instances to maintain a balance between optimizing cost and enabling high availability during eviction of instances.
+- Ensure only non-critical pods or applications like one involving batch processing or stateless applications are scheduled on the spot instances as there won't be any loss of data or packet drops in case of nodes being not ready during eviction.
+- Distribute your spot instance creation in different availability zones to enhance availability & resilience.
+- Periodically review and update your spot instance bids to remain competitive in the market and take advantage of potential cost savings.
+- Continuously monitor instance terminations, spot instance pricing trends, and system metrics to make informed decisions and quickly respond to any changes or interruptions.
 
+<br><br>
+
+## **Conslusion**<br>
+In conclusion, utilizing spot instances in your managed Red Hat OpenShift clusters on the cloud can significantly reduce your cloud spend while maintaining the necessary performance and availability. Spot instances are particularly useful for workloads that can tolerate interruptions and have flexible resource requirements. They are commonly utilized for tasks such as batch processing, big data analytics, research simulations, or any workload that can be distributed across multiple instances or restarted without significant data loss.
+
+<br><br>
