@@ -16,7 +16,7 @@ excerpt_separator: <!--more-->
 One such integrated feature gaining traction is the utilization of spot instances for running workloads in OpenShift clusters. With steps for hands-on demo, this blog equips readers with the knowledge around the terms & terminologies, concepts, benefits and best practices to leverage spot instances and drive cost efficiencies in their managed Red Hat OpenShift clusters.
 <!--more-->
 <br>
-Red Hat OpenShift is available as a managed service on major cloud platforms provided by AWS, Microsoft, Google & IBM. We will be using [Microsoft Azure Red Hat OpenShift(ARO)](https://www.redhat.com/en/technologies/cloud-computing/openshift/azure) for our practical use-case. However, the process remains similar with some specific changes for respective cloud platforms. In order to interact with our ARO cluster, along with cli, Red Hat provides an elegant web based user interface which we will be using to carry out actions on our cluster easily. 
+Red Hat OpenShift is available as a managed service on major cloud platforms provided by AWS, Microsoft, Google & IBM. We will be using [Microsoft Azure Red Hat OpenShift(ARO)](https://www.redhat.com/en/technologies/cloud-computing/openshift/azure) version 4.10.54 for our practical use-case. However, the process remains similar with some specific changes for respective cloud platforms. In order to interact with our ARO cluster, along with cli, Red Hat provides an elegant web based user interface which we will be using to carry out actions on our cluster easily. 
 
 <br><br>
 
@@ -48,9 +48,9 @@ In general, spot instances have a tremendously lower price as compared to on-dem
 - During cluster creation, *Azure Red Hat OpenShift* managed service creates on-demand virtual machines for
 computation requirements as nodes of type `Standard_D8s_v3`.
 - Looking at the [documentation](https://azure.microsoft.com/en-in/pricing/details/virtual-machines/red-hat/#pricing) for cost of these virtual machines in *East US* region as when writing this blog, it is estimated to be **~$280/month**. With increasing traffic & workload, the number and size of instances is meant to increase for the cluster to be able to serve smoothly. Let's keep the scaling part aside for now.
-- Coming to spot instances for type `Standard_D8s_v3`, the estimated price drops significanty to **~$83/month**. That's nearly 350% lesser than that of on-demand instances. This would further drop for regions which do not have high demand for compute resources.
+- Coming to spot instances for type `Standard_D8s_v3`, the estimated price drops significanty to **~$83/month**. That's nearly 70% lesser than that of on-demand instances. This would further drop for regions which do not have high demand for compute resources.
 - So, with replacement of one on-demand virtual machine with spot instance, we will be saving **~$200/month**. 
-- Lastly, let's consider a cluster with 10 worker nodes which usually is not a huge cluster but normal for a small/mid size enterprise application. To balance cloud cost optimization and SLA of application, even if 5 nodes would be replaced with spot instances under resilient architecture design, around **~$1000/month** could be saved. Imagine there exist clusters with 1000+ worker nodes as well !!
+- Lastly, let's consider a cluster with 10 worker nodes which usually is not a huge cluster but normal for a small/mid size enterprise application. To balance cloud cost optimization and SLA of application, even if 5 nodes would be replaced with spot instances under resilient architecture design, around **~$1000/month** could be saved. Imagine there exist clusters with dozens of worker nodes as well !!
 
 <br><br>
 
@@ -68,7 +68,7 @@ Lets go now !! 🚀
 <br><br>
 
 ## **Some Best Practices To Keep In Mind**
-- Even though it seems tempting to do, but master nodes should (can) never be run as a spot instance.
+- Even though it seems tempting to do, but master nodes must not be run as a spot instance especially in the context of a managed OpenShift service such as ARO.
 - Thorough research and testing is required to create a resilient architecture integrating spot instances to maintain a balance between optimizing cost and enabling high availability during eviction of instances.
 - Ensure only non-critical pods or applications like one involving batch processing or stateless applications are scheduled on the spot instances as there won't be any loss of data or packet drops in case of nodes being not ready during eviction.
 - Distribute your spot instance creation in different availability zones to enhance availability & resilience.
